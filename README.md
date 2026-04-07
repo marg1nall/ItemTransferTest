@@ -3,7 +3,8 @@
 # Item Transfer Test Assignment
 
 
-![Анимация](https://github.com/user-attachments/assets/75045921-7e26-4e89-aee3-05ae074b2fa6)
+![Анимация](https://github.com/user-attachments/assets/26d749b4-d5d1-4c81-8019-3a66dd5b8947)
+
 
 ## Описание
 
