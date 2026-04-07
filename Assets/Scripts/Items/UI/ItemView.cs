@@ -1,5 +1,6 @@
 using System;
 using Common.UI;
+using Inventory.Models;
 using Items.Models;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -24,10 +25,10 @@ namespace Items.UI
 
         private Color GetColor(ItemData item)
         {
-            return item.Category switch
+            return item.TargetTab switch
             {
-                ItemCategory.APositive => new Color(1f, 0.78f, 0.2f),
-                ItemCategory.AZero => new Color(0.6f, 0.85f, 0.2f),
+                InventoryTabType.APositive => new Color(1f, 0.78f, 0.2f),
+                InventoryTabType.AZero => new Color(0.6f, 0.85f, 0.2f),
                 _ => Color.blue
             };
         }

@@ -18,7 +18,7 @@ namespace Inventory.Logic
         
         public InventoryToBoardTransferResult ReturnToAnyFreeCell(InventoryTabType tabType, int slotIndex)
         {
-            var board = _boardRepository.Get();
+            BoardState board = _boardRepository.Get();
 
             for (var y = 0; y < board.Height; y++)
             {
@@ -39,8 +39,8 @@ namespace Inventory.Logic
         
         private InventoryToBoardTransferResult Transfer(InventoryTabType tabType, int slotIndex, BoardPosition targetPosition)
         {
-            var board = _boardRepository.Get();
-            var inventory = _inventoryRepository.Get();
+            BoardState board = _boardRepository.Get();
+            InventoryState inventory = _inventoryRepository.Get();
 
             if (!inventory.TryTake(tabType, slotIndex, out var item))
             {

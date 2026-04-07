@@ -3,27 +3,28 @@ using Board.UI;
 using Common.Api;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace Board.Logic
 {
-    public class BoardConstructor
+    public class BoardConstructor : IInitializable
     {
         private readonly BoardData _boardData;
+        private readonly GridLayoutGroup _gridRoot;
         private readonly IViewFactory _viewFactory;
         
         public BoardConstructor(IViewFactory viewFactory, BoardData boardData, GridLayoutGroup gridRoot)
         {
             _viewFactory = viewFactory;
             _boardData = boardData;
-
-            ConfigureGrid(gridRoot, boardData);
+            _gridRoot =  gridRoot;
         }
 
-        private void ConfigureGrid(GridLayoutGroup gridRoot, BoardData data)
+        public void Initialize()
         {
-            gridRoot.cellSize = data.CellSize;
-            gridRoot.constraint = data.Constraint;
-            gridRoot.constraintCount = data.Height;
+            _gridRoot.cellSize = _boardData.CellSize;
+            _gridRoot.constraint = _boardData.Constraint;
+            _gridRoot.constraintCount = _boardData.Height;
         }
 
         public CellView[,] BuildBoard()
@@ -36,13 +37,16 @@ namespace Board.Logic
                 {
                     CellView cellView = _viewFactory.Create() as CellView;
                     Color color = (x + y) % 2 == 0 ? _boardData.EvenCellColor : _boardData.OddCellColor;
-                    cellView.SetColor(color);
-                    board[y, x] = cellView;
+                    
+                    if (cellView != null)
+                    {
+                        cellView.SetColor(color);
+                        board[y, x] = cellView;
+                    }
                 }
             }
             
             return board;
         }
-        
     }
 }

@@ -42,7 +42,7 @@ namespace SaveLoad
                 });
             }
 
-            foreach (KeyValuePair<InventoryTabType, InventoryTabState>  pair in _inventoryRepository.Get().Tabs)
+            foreach (KeyValuePair<InventoryTabType, InventoryTabState> pair in _inventoryRepository.Get().Tabs)
             {
                 InventoryTabSnapshot tabSnapshot = new InventoryTabSnapshot
                 {

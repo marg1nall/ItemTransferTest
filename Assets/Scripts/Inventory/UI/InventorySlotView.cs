@@ -69,6 +69,7 @@ namespace Inventory.UI
                 return false;
             }
 
+            // todo сейчас применимо только к оверлей канвасу 
             return RectTransformUtility.RectangleContainsScreenPoint(rectTransform, screenPoint, null);
         }
 

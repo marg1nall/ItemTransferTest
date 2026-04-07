@@ -1,10 +1,11 @@
 using Items.Api;
 using Items.Logic;
 using Items.Models;
+using Items.UI;
 using UnityEngine;
 using Zenject;
 
-namespace Items.UI
+namespace Items
 {
     public class ItemInstaller : MonoInstaller
     {

@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using SaveLoad.UI;
+using UnityEngine;
 using Zenject;
 
 namespace SaveLoad.Logic
@@ -37,21 +38,35 @@ namespace SaveLoad.Logic
 
         private async void OnSaveClicked()
         {
-            SetButtonsInteractable(false);
-            await _gameSaver.SaveAsync(CancellationToken.None);
-            SetButtonsInteractable(true);
+            try
+            {
+                SetButtonsInteractable(false);
+                await _gameSaver.SaveAsync(CancellationToken.None);
+                SetButtonsInteractable(true);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"{GetType().Name}: {e.Message}");
+            }
         }
 
         private async void OnLoadClicked()
         {
-            SetButtonsInteractable(false);
-            bool loaded = await _gameLoader.LoadAsync(CancellationToken.None);
-            if (loaded)
+            try
             {
-                _gameVisualSyncService.Rebuild();
-            }
+                SetButtonsInteractable(false);
+                bool loaded = await _gameLoader.LoadAsync(CancellationToken.None);
+                if (loaded)
+                {
+                    _gameVisualSyncService.Rebuild();
+                }
 
-            SetButtonsInteractable(true);
+                SetButtonsInteractable(true);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"{GetType().Name}: {e.Message}");
+            }
         }
 
         private void SetButtonsInteractable(bool isInteractable)

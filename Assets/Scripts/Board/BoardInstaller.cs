@@ -13,16 +13,16 @@ namespace Board
     {
         [SerializeField] private GridLayoutGroup _gridRoot;
         [SerializeField] private CellView _cellPrefab;
-        [SerializeField] private BoardData boardData;
+        [SerializeField] private BoardData _boardData;
         
         public override void InstallBindings()
         {
-            Container.BindInstance(boardData).AsSingle();
+            Container.BindInstance(_boardData).AsSingle();
             Container.BindInstance(_gridRoot).AsSingle();
             Container.BindInstance(_cellPrefab).AsSingle();
-            Container.Bind<BoardState>().AsSingle().WithArguments(boardData.Width, boardData.Height);;
+            Container.Bind<BoardState>().AsSingle().WithArguments(_boardData.Width, _boardData.Height);;
             Container.Bind<IBoardStateRepository>().To<InMemoryBoardStateRepository>().AsSingle();
-            Container.Bind<BoardConstructor>().AsSingle();
+            Container.BindInterfacesAndSelfTo<BoardConstructor>().AsSingle();
             Container.BindInterfacesAndSelfTo<BoardPlacementService>().AsSingle();
             Container.Bind<IViewFactory>().To<CellViewFactory>().AsSingle();
         }
