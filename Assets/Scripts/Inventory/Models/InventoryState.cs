@@ -7,13 +7,13 @@ namespace Inventory.Models
     {
         private readonly Dictionary<InventoryTabType, InventoryTabState> _tabs;
 
-        public InventoryState(int aZeroCapacity, int aPositiveCapacity, int bCapacity)
+        public InventoryState(InventoryTabData inventoryTabData)
         {
             _tabs = new Dictionary<InventoryTabType, InventoryTabState>
             {
-                [InventoryTabType.AZero] = new(aZeroCapacity, true),
-                [InventoryTabType.APositive] = new(aPositiveCapacity, false),
-                [InventoryTabType.B] = new(bCapacity, false)
+                [InventoryTabType.AZero] = new(inventoryTabData.AZeroCapacity, inventoryTabData.CanExpandAZero),
+                [InventoryTabType.APositive] = new(inventoryTabData.APositiveCapacity, inventoryTabData.CanExpandAPositive),
+                [InventoryTabType.B] = new(inventoryTabData.BCapacity, inventoryTabData.CanExpandB)
             };
         }
 

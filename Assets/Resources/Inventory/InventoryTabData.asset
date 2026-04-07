@@ -10,8 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9cac3ad7a4873a4daf5233db4ad158f, type: 3}
-  m_Name: InventoryTabCapacitiesData
+  m_Name: InventoryTabData
   m_EditorClassIdentifier: Assembly-CSharp::Inventory.Models.InventoryTabCapacitiesData
   AZeroCapacity: 4
   APositiveCapacity: 5
   BCapacity: 6
+  CanExpandAZero: 1
+  CanExpandAPositive: 0
+  CanExpandB: 0

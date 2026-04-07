@@ -650,7 +650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Scripts.Inventory.InventoryInstaller
   _inventoryButtonView: {fileID: 1110222106}
   _inventoryWindowView: {fileID: 1121939203}
-  _tabCapacitiesData: {fileID: 11400000, guid: 927158224acc9c44c8f97ed205dd2c45, type: 2}
+  _tabData: {fileID: 11400000, guid: 927158224acc9c44c8f97ed205dd2c45, type: 2}
 --- !u!4 &657060750
 Transform:
   m_ObjectHideFlags: 0
@@ -697,7 +697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Scripts.Board.BoardInstaller
   _gridRoot: {fileID: 744481906}
   _cellPrefab: {fileID: 4286348121992731423, guid: 4330af59dcc8ea94bb7cf97897238dae, type: 3}
-  boardData: {fileID: 11400000, guid: 6ab455ed7053fb04f8435d683d68b12b, type: 2}
+  _boardData: {fileID: 11400000, guid: 6ab455ed7053fb04f8435d683d68b12b, type: 2}
 --- !u!4 &680988873
 Transform:
   m_ObjectHideFlags: 0

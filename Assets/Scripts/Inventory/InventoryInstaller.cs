@@ -11,16 +11,14 @@ namespace Inventory
     {
         [SerializeField] private InventoryButtonView _inventoryButtonView;
         [SerializeField] private InventoryWindowView _inventoryWindowView;
-        [SerializeField] private InventoryTabCapacitiesData _tabCapacitiesData;
+        [SerializeField] private InventoryTabData _tabData;
 
         public override void InstallBindings()
         {
             Container.BindInstance(_inventoryButtonView).AsSingle();
             Container.BindInstance(_inventoryWindowView).AsSingle();
-            Container.BindInstance(_tabCapacitiesData).AsSingle();
-            Container.Bind<InventoryState>()
-                .AsSingle()
-                .WithArguments(_tabCapacitiesData.AZeroCapacity, _tabCapacitiesData.APositiveCapacity, _tabCapacitiesData.BCapacity);
+            Container.BindInstance(_tabData).AsSingle();
+            Container.Bind<InventoryState>().AsSingle();
             Container.Bind<IInventoryStateRepository>().To<InMemoryInventoryStateRepository>().AsSingle();
             Container.Bind<BoardToInventoryTransfer>().AsSingle();
             Container.Bind<InventoryToBoardTransfer>().AsSingle();

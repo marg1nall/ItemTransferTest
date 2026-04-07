@@ -12,15 +12,15 @@ namespace SaveLoad.Logic
     {
         private readonly IBoardStateRepository _boardRepository;
         private readonly IInventoryStateRepository _inventoryRepository;
-        private readonly InventoryTabCapacitiesData _configuration;
+        private readonly InventoryTabData _configurationTabs;
         private readonly IItemIdGenerator _itemIdGenerator;
 
         public GameStateRestorer(IBoardStateRepository boardRepository, IInventoryStateRepository inventoryRepository,
-            InventoryTabCapacitiesData configuration, IItemIdGenerator itemIdGenerator)
+            InventoryTabData configurationTabs, IItemIdGenerator itemIdGenerator)
         {
             _boardRepository = boardRepository;
             _inventoryRepository = inventoryRepository;
-            _configuration = configuration;
+            _configurationTabs = configurationTabs;
             _itemIdGenerator = itemIdGenerator;
         }
 
@@ -28,8 +28,7 @@ namespace SaveLoad.Logic
         {
             BoardState currentBoard = _boardRepository.Get();
             BoardState board = new BoardState(currentBoard.Width, currentBoard.Height);
-            InventoryState inventory = new InventoryState(_configuration.AZeroCapacity, 
-                _configuration.APositiveCapacity, _configuration.BCapacity);
+            InventoryState inventory = new InventoryState(_configurationTabs);
 
             foreach (BoardItemSnapshot boardItem in snapshot.BoardItems)
             {
